@@ -16,3 +16,9 @@ class CreateView(generic.edit.CreateView):
 class DetailView(generic.DetailView):
     template_name = 'events/detail.html'
     model = Event
+
+class UpdateView(generic.edit.UpdateView):
+    template_name = 'events/update.html'
+    model = Event
+    form_class = EventForm
+    success_url = reverse_lazy('events:index')

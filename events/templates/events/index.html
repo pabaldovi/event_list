@@ -10,6 +10,7 @@
                     <tr>
                         <td>{{ event.description }}</td>
                         <td><a href="{% url 'events:detail' event.id %}" class="btn btn-outline-secondary">view</a></td>
+                        <td><a href="{% url 'events:update' event.id %}" class="btn btn-outline-success">edit</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
