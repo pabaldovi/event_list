@@ -9,6 +9,7 @@
                     {% for event in object_list %}
                     <tr>
                         <td>{{ event.description }}</td>
+                        <td><a href="{% url 'events:detail' event.id %}" class="btn btn-outline-secondary">view</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
