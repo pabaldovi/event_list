@@ -1,0 +1,25 @@
+--- # basic event
+- model: events.event
+  fields:
+    description: mid review
+    date: 2022-06-24 00:00:00-1000
+
+- model: events.event
+  fields:
+    description: final review
+    date: 2022-06-30 00:00:00-1000
+
+- model: events.event
+  fields:
+    description: last day of class
+    date: 2022-07-01 00:00:00-1000
+
+- model: events.event
+  fields:
+    description: fall `22 semester starts
+    date: 2022-08-22 00:00:00-1000
+
+- model: events.event
+  fields:
+    description: christmas
+    date: 2022-12-25 00:00:00-1000
