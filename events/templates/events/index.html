@@ -1,8 +1,6 @@
 {% extends "events/base.html" %}
 
 {% block content %}
-<p>hi</p>
-<a href="{% url 'events:create' %}" class="btn btn-outline-primary">create</a>
 {% for event in object_list %}
     {{ event.description }}
 {% endfor %}
