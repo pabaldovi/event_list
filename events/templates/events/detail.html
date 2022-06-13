@@ -4,6 +4,7 @@
 <ul class="list-group">
     <li class="list-group-item">{{ object.description }}</li>
     <li class="list-group-item">
+        <a href="{% url 'events:delete' object.id %}" class="btn btn-outline-danger">delete</a>
         <a href="{% url 'events:index' %}" class="btn btn-outline-dark">return</a>
     </li>
 

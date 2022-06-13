@@ -22,3 +22,8 @@ class UpdateView(generic.edit.UpdateView):
     model = Event
     form_class = EventForm
     success_url = reverse_lazy('events:index')
+
+class DeleteView(generic.edit.DeleteView):
+    template_name = 'events/delete.html'
+    model = Event
+    success_url = reverse_lazy('events:index')
