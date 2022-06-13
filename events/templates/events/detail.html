@@ -2,12 +2,13 @@
 
 {% block content %}
 <ul class="list-group">
+    <li class="list-group-item">{{ object }}</li>
     <li class="list-group-item">{{ object.description }}</li>
+    <li class="list-group-item">{{ object.get_date_only }}</li>
     <li class="list-group-item">
         <a href="{% url 'events:update' object.id %}" class="btn btn-outline-success">edit</a>
         <a href="{% url 'events:delete' object.id %}" class="btn btn-outline-danger">delete</a>
         <a href="{% url 'events:index' %}" class="btn btn-outline-dark">return</a>
     </li>
-
 </ul>
 {% endblock %}

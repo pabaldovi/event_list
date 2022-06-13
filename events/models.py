@@ -13,3 +13,7 @@ class Event(models.Model):
     def date_diff(self):
         today = timezone.now()
         return (self.date - today).days
+
+    @property
+    def get_date_only(self):
+        return self.date.date()
