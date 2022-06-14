@@ -16,7 +16,12 @@
 
 - model: events.event
   fields:
-    description: fall `22 semester starts
+    description: summer session 2 starts
+    date: 2022-07-05 00:00:00-1000
+
+- model: events.event
+  fields:
+    description: fall '22 semester starts
     date: 2022-08-22 00:00:00-1000
 
 - model: events.event
