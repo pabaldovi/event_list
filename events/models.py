@@ -7,12 +7,12 @@ class Event(models.Model):
     date = models.DateTimeField('date')
 
     def __str__(self):
-        return "There are " + str(self.date_diff) + " days until " + self.description
+        return str(self.date_diff) + " days until " + self.description
 
     @property
     def date_diff(self):
         today = timezone.now()
-        return (self.date - today).days
+        return (self.date - today).days + 1
 
     @property
     def get_date_only(self):
