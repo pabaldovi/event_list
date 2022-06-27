@@ -9,12 +9,19 @@ class IndexView(LoginRequiredMixin, generic.ListView):
     template_name = 'events/index.html'
     model = Event
 
+    def get_queryset(self):
+        return Event.objects.filter(author=self.request.user)
+
 class CreateView(LoginRequiredMixin, generic.edit.CreateView):
     login_url = '/login/'
     template_name = 'events/create.html'
     model = Event
     form_class = EventForm
     success_url = reverse_lazy('events:index')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 class DetailView(LoginRequiredMixin, generic.DetailView):
     login_url = '/login/'
