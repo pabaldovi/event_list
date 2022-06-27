@@ -1,0 +1,22 @@
+<div class="d-flex flex-row-reverse">
+    <div class="dropdown m-2">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Sort</button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {% if request.path == '/' %}
+                <li>
+                    <a href="{% url 'events:index' %}" class="dropdown-item active" id="ascending-btn">Ascending</a>
+                </li>
+                <li>
+                    <a href="{% url 'events:descending' %}" class="dropdown-item" id="descending-btn">Descending</a>
+                </li>
+            {% elif request.path == '/descending/' %}
+                <li>
+                    <a href="{% url 'events:index' %}" class="dropdown-item" id="ascending-btn">Ascending</a>
+                </li>
+                <li>
+                    <a href="{% url 'events:descending' %}" class="dropdown-item active" id="descending-btn">Descending</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

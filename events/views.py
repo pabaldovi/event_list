@@ -10,7 +10,7 @@ class IndexView(LoginRequiredMixin, generic.ListView):
     model = Event
 
     def get_queryset(self):
-        return Event.objects.filter(author=self.request.user)
+        return Event.objects.filter(author=self.request.user).order_by('date')
 
 class CreateView(LoginRequiredMixin, generic.edit.CreateView):
     login_url = '/login/'
@@ -28,6 +28,9 @@ class DetailView(LoginRequiredMixin, generic.DetailView):
     template_name = 'events/detail.html'
     model = Event
 
+    def get_queryset(self):
+        return Event.objects.filter(author=self.request.user)
+
 class UpdateView(LoginRequiredMixin, generic.edit.UpdateView):
     login_url = '/login/'
     template_name = 'events/update.html'
@@ -40,3 +43,11 @@ class DeleteView(LoginRequiredMixin, generic.edit.DeleteView):
     template_name = 'events/delete.html'
     model = Event
     success_url = reverse_lazy('events:index')
+
+class DescendingView(LoginRequiredMixin, generic.ListView):
+    login_url = '/login/'
+    template_name = 'events/index.html'
+    model = Event
+
+    def get_queryset(self):
+        return Event.objects.filter(author=self.request.user).order_by('-date')
