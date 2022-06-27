@@ -5,9 +5,11 @@
                 <li class="nav-item">
                     <a class="navbar-brand" href="{% url 'events:index' %}">X days until</a>
                 </li>
-                <li class="nav-item">
-                    <a href="{% url 'events:create' %}" class="btn btn-outline-primary">create</a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'events:create' %}" class="btn btn-outline-primary">create</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
         <div>
