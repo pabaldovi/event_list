@@ -1,6 +1,8 @@
 {% for field in form %}
-<div class="ms-auto mb-3 row">
+<!-- <div class="ms-auto mb-3 row">
     <label class="col-sm-2 col-form-label">{{ field.label_tag }}</label>
     <div class="col-6">{{ field }}</div>
-</div>
+</div> -->
+    {{ field.label_tag }}
+    {{ field }}
 {% endfor %}
