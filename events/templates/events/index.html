@@ -2,21 +2,10 @@
 
 {% block content %}
 <div class="container">
-    <div class = "row">
-        <div class = "col">
-            <table class="table">
-                <tbody>
-                    {% for event in object_list %}
-                    <tr>
-                        <td>{{ event }}</td>
-                        <td><a href="{% url 'events:detail' event.id %}" class="btn btn-outline-secondary">view</a></td>
-                        <td><a href="{% url 'events:update' event.id %}" class="btn btn-outline-success">edit</a></td>
-                        <td><a href="{% url 'events:delete' event.id %}" class="btn btn-outline-danger">delete</a></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+    <div class="list-group">
+        {% for event in object_list %}
+            <a href="{% url 'events:detail' event.id %}" class="list-group-item list-group-item-action">{{ event }}</a>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
