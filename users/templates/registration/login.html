@@ -7,7 +7,12 @@
     <form method="post" class="form-group">
         {% csrf_token %}
         {{ form|crispy }}
-        <input class="btn btn-outline-success" type="submit" value="login">
+        <div>
+            <input class="w-100 btn btn-outline-success" type="submit" value="login">
+        </div>
+        <div>
+            <a href="/users/register" class="w-100 btn btn-outline-secondary">register</a>
+        </div>
     </form>
 </div>
 {% endblock %}
