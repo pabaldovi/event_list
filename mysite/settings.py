@@ -139,3 +139,7 @@ CSRF_TRUSTED_ORIGINS = ['https://dry-spire-52338.herokuapp.com']
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'
