@@ -7,6 +7,8 @@ class Event(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     description = models.CharField(max_length=200)
     date = models.DateTimeField('date')
+    created_datetime = models.DateTimeField(auto_now_add=True)
+    last_updated_datetime = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         return str(self.date_diff) + " days until " + self.description
