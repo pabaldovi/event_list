@@ -4,8 +4,13 @@
 <div class="container">
     <ul class="list-group">
         <li class="list-group-item">{{ object }}</li>
-        <li class="list-group-item">{{ object.description }}</li>
-        <li class="list-group-item">{{ object.get_date_only }}</li>
+        <li class="list-group-item">Date: {{ object.get_date_only }}</li>
+        <li class="list-group-item">Author: {{ object.author }}</li>
+        {% if object.last_updated_datetime > object.created_datetime %}
+            <li class="list-group-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Created: {{ object.created_datetime }}">Updated: {{ object.last_updated_datetime }}</li>
+        {% else %}
+            <li class="list-group-item">Created: {{ object.created_datetime }}</li>
+        {% endif %}
         <li class="list-group-item">
             <a href="{% url 'events:update' object.id %}" class="btn btn-outline-success">edit</a>
             <a href="{% url 'events:delete' object.id %}" class="btn btn-outline-danger">delete</a>
