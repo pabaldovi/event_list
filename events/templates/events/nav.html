@@ -23,9 +23,12 @@
                         <span class="navbar-text">Logged in as {{ user.username }} | </span>
                         <a href="/logout" class="btn btn-outline-secondary">logout</a>
                     </li>
-                {% else %}
+                {% elif request.path != '/login/' %}
                     <li class="nav-item">
                         <a href="/login" class="btn btn-outline-secondary">login</a>
+                    </li>
+                {% elif request.path != '/users/register' %}
+                    <li class="nav-item">
                         <a href="/users/register" class="btn btn-outline-secondary">register</a>
                     </li>
                 {% endif %}
