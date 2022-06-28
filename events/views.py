@@ -3,7 +3,6 @@ from django.urls import reverse_lazy
 from .models import Event
 from .forms import EventForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .filters import EventFilter
 
 class IndexView(LoginRequiredMixin, generic.ListView):
     login_url = '/login/'
