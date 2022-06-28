@@ -16,6 +16,18 @@
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
+                        <form method="GET" action="/search_results/">
+                            <input type="text" name="q" value="{{ request.GET.q }}">
+                            <input class="btn btn-outline-primary" type="submit" value="submit">
+                        </form>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        <div>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
                         <span class="navbar-text">Logged in as {{ user.username }} | </span>
                         <a href="/logout" class="btn btn-outline-secondary">logout</a>
                     </li>

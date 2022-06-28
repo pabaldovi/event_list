@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from .models import Event
 from .forms import EventForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .filters import EventFilter
 
 class IndexView(LoginRequiredMixin, generic.ListView):
     login_url = '/login/'
@@ -51,3 +52,16 @@ class DescendingView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return Event.objects.filter(author=self.request.user).order_by('-date')
+
+class DescriptionSearchView(LoginRequiredMixin, generic.ListView):
+    login_url = '/login/'
+    template_name = 'events/search_results.html'
+    model = Event
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            object_list = Event.objects.filter(author=self.request.user).filter(description__icontains=query).order_by('date')
+        else:
+            object_list = Event.objects.none()
+        return object_list
