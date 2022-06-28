@@ -12,18 +12,14 @@
                 {% endif %}
             </ul>
         </div>
-        <div>
-            <ul class="navbar-nav">
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <form method="GET" action="/search_results/">
-                            <input type="text" name="q" value="{{ request.GET.q }}">
-                            <input class="btn btn-outline-primary" type="submit" value="submit">
-                        </form>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
+        {% if user.is_authenticated %}          
+        <form method="GET" action="/search_results/">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" name="q" value="{{ request.GET.q }}">
+                <input class="btn btn-outline-primary" type="submit" value="submit">
+            </div>
+        </form>
+        {% endif %}
         <div>
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
