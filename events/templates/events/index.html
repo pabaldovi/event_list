@@ -5,7 +5,7 @@
     {% include "events/filter_btn.html" %}
     <div class="list-group">
         {% for event in object_list %}
-            <a href="{% url 'events:detail' event.id %}" class="list-group-item list-group-item-action">{{ event }}</a>
+            <button type="button" hx-get="{% url 'events:detail' event.id %}" hx-target="#dialog" class="list-group-item list-group-item-action">{{ event }}</button>
         {% endfor %}
     </div>
 </div>

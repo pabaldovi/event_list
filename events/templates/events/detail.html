@@ -1,21 +1,19 @@
-{% extends "events/base.html" %}
-
-{% block content %}
-<div class="container">
-    <ul class="list-group">
-        <li class="list-group-item">{{ object }}</li>
-        <li class="list-group-item">Date: {{ object.get_date_only }}</li>
-        <li class="list-group-item">Author: {{ object.author }}</li>
-        {% if object.last_updated_datetime|date:'m-d-Y H:i:s' == object.created_datetime|date:'m-d-Y H:i:s' %}
-            <li class="list-group-item">Created: {{ object.created_datetime|date:'N j, Y H:i:s' }}</li>
-        {% else %}
-            <li class="list-group-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Created: {{ object.created_datetime }}">Updated: {{ object.last_updated_datetime|date:'N j, Y H:i:s' }}</li>
-        {% endif %}
-        <li class="list-group-item">
-            <a href="{% url 'events:update' object.id %}" class="btn btn-outline-success">edit</a>
-            <a href="{% url 'events:delete' object.id %}" class="btn btn-outline-danger">delete</a>
-            <a href="{% url 'events:index' %}" class="btn btn-outline-dark">return</a>
-        </li>
-    </ul>
+<div class="modal-content">
+    <div class="modal-body">
+        <ul class="list-group">
+            <li class="list-group-item">{{ object }}</li>
+            <li class="list-group-item">Date: {{ object.get_date_only }}</li>
+            <li class="list-group-item">Author: {{ object.author }}</li>
+            {% if object.last_updated_datetime|date:'m-d-Y H:i:s' == object.created_datetime|date:'m-d-Y H:i:s' %}
+                <li class="list-group-item">Created: {{ object.created_datetime|date:'N j, Y H:i:s' }}</li>
+            {% else %}
+                <li class="list-group-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Created: {{ object.created_datetime }}">Updated: {{ object.last_updated_datetime|date:'N j, Y H:i:s' }}</li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <a href="{% url 'events:update' event.id %}" class="btn btn-outline-success">edit</a>
+        <a href="{% url 'events:delete' event.id %}" class="btn btn-outline-danger">delete</a>
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">return</button>
+    </div>
 </div>
-{% endblock %}
