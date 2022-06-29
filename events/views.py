@@ -54,7 +54,7 @@ class DescendingView(LoginRequiredMixin, generic.ListView):
 
 class DescriptionSearchView(LoginRequiredMixin, generic.ListView):
     login_url = '/login/'
-    template_name = 'events/search_results.html'
+    template_name = 'events/index.html'
     model = Event
 
     def get_queryset(self):
