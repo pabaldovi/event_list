@@ -61,7 +61,10 @@ class DescriptionSearchView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
-            object_list = Event.objects.filter(author=self.request.user).filter(description__icontains=query).order_by('date')
+            object_list = (Event.objects
+                            .filter(author=self.request.user)
+                            .filter(description__icontains=query)
+                            .order_by('date'))
         else:
             object_list = Event.objects.none()
         return object_list
