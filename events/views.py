@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from .models import Event
 from .forms import EventForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
 
 class IndexView(LoginRequiredMixin, generic.ListView):
     login_url = '/login/'
@@ -64,3 +65,35 @@ class DescriptionSearchView(LoginRequiredMixin, generic.ListView):
         else:
             object_list = Event.objects.none()
         return object_list
+
+def ChartView(request):
+    jan_events_count = Event.objects.filter(author=request.user).filter(date__month='1').count()
+    feb_events_count = Event.objects.filter(author=request.user).filter(date__month='2').count()
+    mar_events_count = Event.objects.filter(author=request.user).filter(date__month='3').count()
+    apr_events_count = Event.objects.filter(author=request.user).filter(date__month='4').count()
+    may_events_count = Event.objects.filter(author=request.user).filter(date__month='5').count()
+    jun_events_count = Event.objects.filter(author=request.user).filter(date__month='6').count()
+    jul_events_count = Event.objects.filter(author=request.user).filter(date__month='7').count()
+    aug_events_count = Event.objects.filter(author=request.user).filter(date__month='8').count()
+    sep_events_count = Event.objects.filter(author=request.user).filter(date__month='9').count()
+    oct_events_count = Event.objects.filter(author=request.user).filter(date__month='10').count()
+    nov_events_count = Event.objects.filter(author=request.user).filter(date__month='11').count()
+    dec_events_count = Event.objects.filter(author=request.user).filter(date__month='12').count()
+
+    events_per_month = [
+        jan_events_count,
+        feb_events_count,
+        mar_events_count,
+        apr_events_count,
+        may_events_count,
+        jun_events_count,
+        jul_events_count,
+        aug_events_count,
+        sep_events_count,
+        oct_events_count,
+        nov_events_count,
+        dec_events_count
+    ]
+
+    context = {'events_per_month': events_per_month}
+    return render(request, 'events/chart.html', context)

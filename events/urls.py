@@ -10,4 +10,5 @@ urlpatterns = [
     path('delete/<int:pk>', views.DeleteView.as_view(), name='delete'),
     path('descending/', views.DescendingView.as_view(), name='descending'),
     path('search_results/', views.DescriptionSearchView.as_view(), name='search_results'),
+    path('chart', views. ChartView, name='chart'),
 ]

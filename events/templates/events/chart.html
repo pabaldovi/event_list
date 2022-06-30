@@ -1,0 +1,47 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<div>
+    <canvas id="monthChart"></canvas>
+</div>
+
+<script>
+    const labels = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Events per month',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [{% for month in events_per_month %} '{{ month }}', {% endfor %}],
+        }]
+    };
+
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {}
+    };
+</script>
+
+<script>
+    const myChart = new Chart(
+        document.getElementById('monthChart'),
+        config
+    );
+</script>
+{% endblock %}
