@@ -1,9 +1,9 @@
 from django.views import generic
 from django.urls import reverse_lazy
-from .models import Event
-from .forms import EventForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from .models import Event
+from .forms import EventForm
 
 class IndexView(LoginRequiredMixin, generic.ListView):
     login_url = '/login/'
