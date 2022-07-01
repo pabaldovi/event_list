@@ -11,6 +11,7 @@ class IndexView(LoginRequiredMixin, generic.ListView):
     model = Event
 
     def get_queryset(self):
+        """Return all events created by current user in ascending order."""
         return Event.objects.filter(author=self.request.user).order_by('date')
 
 class CreateView(LoginRequiredMixin, generic.edit.CreateView):
@@ -30,6 +31,7 @@ class DetailView(LoginRequiredMixin, generic.DetailView):
     model = Event
 
     def get_queryset(self):
+        """Return event created by current user."""
         return Event.objects.filter(author=self.request.user)
 
 class UpdateView(LoginRequiredMixin, generic.edit.UpdateView):
@@ -51,6 +53,7 @@ class DescendingView(LoginRequiredMixin, generic.ListView):
     model = Event
 
     def get_queryset(self):
+        """Return all events created by current user in descending order."""
         return Event.objects.filter(author=self.request.user).order_by('-date')
 
 class DescriptionSearchView(LoginRequiredMixin, generic.ListView):
@@ -59,6 +62,7 @@ class DescriptionSearchView(LoginRequiredMixin, generic.ListView):
     model = Event
 
     def get_queryset(self):
+        """Return events created by current user that contains the query in ascending order."""
         query = self.request.GET.get('q')
         if query:
             object_list = (Event.objects
